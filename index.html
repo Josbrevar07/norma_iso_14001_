@@ -1,0 +1,922 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ISO 14001:2026 — Guía práctica Costa Rica | Josbrevar 07</title>
+    <meta
+      name="description"
+      content="Guía práctica ISO 14001:2026 para Costa Rica: requisitos, checklist, KPIs, objetivos SMART y recursos."
+    />
+    <style>
+      /* ====== Variables y reset básico (mobile-first) ====== */
+      :root {
+        --verde: #0b8a55;
+        --verde-osc: #084b33;
+        --accent: #0f6b3f;
+        --bg: #f6fbf8;
+        --card: #ffffff;
+        --text: #0b2b22;
+        --muted: #4b6b60;
+        --glass: rgba(255, 255, 255, 0.9);
+        --radius: 12px;
+        --max-width: 1100px;
+        --shadow: 0 10px 30px rgba(10, 30, 20, 0.06);
+        --focus: 3px solid rgba(11, 138, 85, 0.18);
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font-family:
+          Inter,
+          system-ui,
+          -apple-system,
+          "Segoe UI",
+          Roboto,
+          "Helvetica Neue",
+          Arial;
+        background: linear-gradient(180deg, var(--bg) 0%, #eef9f2 100%);
+        color: var(--text);
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.45;
+        padding: 18px;
+      }
+      .wrap {
+        max-width: var(--max-width);
+        margin: 0 auto;
+      }
+
+      /* ====== Header ====== */
+      header {
+        background: var(--card);
+        border-radius: var(--radius);
+        padding: 14px;
+        display: flex;
+        gap: 12px;
+        align-items: center;
+        box-shadow: var(--shadow);
+        border: 1px solid rgba(11, 138, 85, 0.06);
+      }
+      .logo {
+        width: 64px;
+        height: 64px;
+        border-radius: 10px;
+        background: linear-gradient(135deg, var(--verde), var(--accent));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: 900;
+        font-size: 18px;
+        flex-shrink: 0;
+      }
+      .brand h1 {
+        margin: 0;
+        font-size: 1.15rem;
+        color: var(--accent);
+      }
+      .brand p {
+        margin: 6px 0 0;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+
+      /* ====== Layout grid (mobile-first) ====== */
+      main {
+        margin-top: 18px;
+      }
+      .grid {
+        display: block;
+        gap: 18px;
+      }
+      @media (min-width: 900px) {
+        .grid {
+          display: grid;
+          grid-template-columns: 2fr 380px;
+          align-items: start;
+        }
+      }
+
+      /* ====== Cards ====== */
+      .card {
+        background: var(--card);
+        border-radius: 10px;
+        padding: 16px;
+        box-shadow: var(--shadow);
+        margin-bottom: 16px;
+      }
+      h2 {
+        color: var(--verde-osc);
+        margin: 0 0 8px;
+      }
+      h3 {
+        margin: 0 0 8px;
+        color: var(--accent);
+      }
+      p.muted {
+        color: var(--muted);
+        margin: 8px 0;
+      }
+      ul,
+      ol {
+        margin: 8px 0 12px 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 8px;
+      }
+      th,
+      td {
+        padding: 8px;
+        border-bottom: 1px solid #eef;
+        text-align: left;
+        font-size: 0.95rem;
+      }
+
+      /* ====== Pills / badges ====== */
+      .pills {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+        margin: 8px 0;
+      }
+      .pill {
+        background: #f0fff5;
+        padding: 8px 12px;
+        border-radius: 999px;
+        color: var(--accent);
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+
+      /* ====== Buttons ====== */
+      .btn {
+        display: inline-block;
+        background: var(--accent);
+        color: #fff;
+        padding: 10px 14px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 700;
+        border: 0;
+        cursor: pointer;
+      }
+      .btn.secondary {
+        background: #fff;
+        color: var(--accent);
+        border: 1px solid rgba(11, 138, 85, 0.12);
+      }
+      .btn.ghost {
+        background: transparent;
+        border: 1px dashed rgba(11, 138, 85, 0.12);
+        color: var(--accent);
+      }
+
+      /* ====== Search box ====== */
+      .search {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 12px;
+      }
+      .search input {
+        flex: 1;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #e6efe9;
+        font-size: 0.95rem;
+      }
+      .search input:focus {
+        outline: none;
+        box-shadow: var(--focus);
+      }
+
+      /* ====== Accordion ====== */
+      .accordion .item {
+        border-top: 1px solid #eef;
+      }
+      .accordion button {
+        width: 100%;
+        text-align: left;
+        padding: 12px;
+        background: transparent;
+        border: 0;
+        font-weight: 700;
+        color: var(--verde-osc);
+        cursor: pointer;
+        font-size: 1rem;
+      }
+      .accordion button:focus {
+        outline: none;
+        box-shadow: var(--focus);
+      }
+      .panel {
+        padding: 0 12px 12px;
+        color: var(--muted);
+        display: none;
+      }
+
+      /* ====== Notice / code ====== */
+      .notice {
+        background: #fff8e6;
+        border-left: 4px solid #ffd27a;
+        padding: 12px;
+        border-radius: 8px;
+        color: #6b4b00;
+      }
+      .code {
+        background: #0b2b22;
+        color: #dff3ea;
+        padding: 8px;
+        border-radius: 6px;
+        font-family: monospace;
+        font-size: 0.9rem;
+        display: inline-block;
+      }
+
+      /* ====== Footer ====== */
+      footer.site-footer {
+        margin-top: 22px;
+        border-radius: 10px;
+        padding: 18px;
+        background: linear-gradient(180deg, #08311f, #062a1a);
+        color: #dff3ea;
+        box-shadow: var(--shadow);
+      }
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .josbrevar {
+        font-weight: 900;
+        font-size: 1.15rem;
+        color: #e6fff0;
+        letter-spacing: 0.6px;
+      }
+      .small {
+        font-size: 13px;
+        color: #cfe9db;
+      }
+      .footer-icons a {
+        display: inline-block;
+        margin-left: 10px;
+        color: inherit;
+        text-decoration: none;
+      }
+      .footer-icons svg {
+        width: 22px;
+        height: 22px;
+        vertical-align: middle;
+        fill: #dff3ea;
+        transition: transform 0.12s ease;
+      }
+      .footer-icons a:hover svg {
+        transform: translateY(-3px);
+      }
+      .contact-list {
+        list-style: none;
+        padding: 0;
+        margin: 8px 0 0;
+      }
+      .contact-list li {
+        font-size: 13px;
+        color: #cfe9db;
+        margin: 6px 0;
+      }
+
+      /* ====== Accessibility helpers ====== */
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+
+      /* ====== Larger screens tweaks ====== */
+      @media (min-width: 1200px) {
+        body {
+          padding: 28px;
+        }
+        .brand h1 {
+          font-size: 1.35rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap" role="document">
+      <header>
+        <div class="logo" aria-hidden="true">Norma</div>
+        <div class="brand">
+          <h1>
+            ISO 14001: 2026 — Guía rápida y práctica para Costa Rica,
+            Universidad Fidélitas. Gestión ambiental para organizaciones
+            educativas. Segundo cuatrimestre, 2026.
+          </h1>
+          <p class="muted">
+            Resumen, Lista para chequear (Checklist), KPIs y objetivos SMART
+            para gestores y PYMES.
+          </p>
+        </div>
+      </header>
+
+      <main>
+        <!-- Search (inserted at top for mobile-first) -->
+        <div style="margin-top: 14px" class="card">
+          <div class="search" role="search" aria-label="Buscar en la guía">
+            <input
+              id="siteSearch"
+              type="search"
+              placeholder="Buscar en la guía (ej: KPIs, checklist, paso)"
+              aria-label="Buscar en la guía"
+            />
+            <button class="btn" id="clearSearch" aria-label="Limpiar búsqueda">
+              Limpiar
+            </button>
+          </div>
+          <div class="pills" aria-hidden="true">
+            <div class="pill">Resultados medibles</div>
+            <div class="pill">Liderazgo</div>
+            <div class="pill">KPIs</div>
+          </div>
+        </div>
+
+        <div class="grid" id="contentGrid">
+          <!-- Main column -->
+          <section>
+            <article class="card" id="resumen">
+              <h2>Resumen ejecutivo</h2>
+              <p class="muted">
+                <strong>ISO 14001:2026</strong> es la edición actual de la norma
+                de Sistemas de Gestión Ambiental (SGA). Su énfasis está en el
+                <strong>desempeño ambiental medible</strong>, el compromiso de
+                la alta dirección y la integración de prioridades como el cambio
+                climático y la biodiversidad.
+              </p>
+
+              <div class="pills" aria-hidden="true">
+                <div class="pill">Enfoque: Resultados</div>
+                <div class="pill">Auditorías internas</div>
+                <div class="pill">Integración ISO</div>
+              </div>
+
+              <h3>¿Qué es un SGA?</h3>
+              <p class="muted">
+                Un <strong>Sistema de Gestión Ambiental (SGA)</strong> es el
+                conjunto de políticas, procesos y prácticas que una organización
+                usa para reducir su impacto ambiental y mejorar su desempeño de
+                forma continua.
+              </p>
+            </article>
+
+            <article class="card" id="clausulas">
+              <h2>Resumen sobre posibles pasos a seguir (práctica)</h2>
+              <p class="muted">
+                Síntesis orientada a la implementación; no sustituye la lectura
+                del texto oficial.
+              </p>
+
+              <div style="margin-top: 10px">
+                <strong>Paso # 1 — Contexto</strong>
+                <p class="muted">
+                  Identificar partes interesadas, factores internos/externos y
+                  definir el alcance del SGA.
+                </p>
+
+                <strong>Paso # 2 — Liderazgo</strong>
+                <p class="muted">
+                  Alta dirección debe demostrar compromiso, asignar
+                  responsabilidades y aprobar la política ambiental.
+                </p>
+
+                <strong>Paso # 3 — Planificación</strong>
+                <p class="muted">
+                  Identificar aspectos e impactos, riesgos y oportunidades;
+                  establecer objetivos y KPIs medibles.
+                </p>
+
+                <strong>Paso # 4 — Soporte</strong>
+                <p class="muted">
+                  Competencia, comunicación y control de la información
+                  documentada.
+                </p>
+
+                <strong>Paso # 5 — Operación</strong>
+                <p class="muted">
+                  Control operacional, gestión de la cadena de suministro y
+                  preparación ante emergencias.
+                </p>
+
+                <strong>Paso # 6 — Evaluación del desempeño</strong>
+                <p class="muted">
+                  Monitoreo, medición, auditorías internas y revisión por la
+                  dirección.
+                </p>
+
+                <strong>Paso # 7 — Mejora</strong>
+                <p class="muted">
+                  Acciones correctivas y mejora continua basada en evidencias.
+                </p>
+              </div>
+            </article>
+
+            <article class="card" id="implementacion">
+              <h2>Algunas prácticas para implementar (6 fases)</h2>
+              <ol>
+                <li>
+                  <strong>Diagnóstico inicial:</strong> alcance, aspectos e
+                  impactos, cumplimiento legal.
+                </li>
+                <li>
+                  <strong>Política y liderazgo:</strong> redactar política
+                  ambiental y comprometer a la dirección.
+                </li>
+                <li>
+                  <strong>Planificación:</strong> objetivos SMART, KPIs y plan
+                  de acción con responsables.
+                </li>
+                <li>
+                  <strong>Operación:</strong> procedimientos, control de
+                  proveedores y gestión de residuos.
+                </li>
+                <li>
+                  <strong>Verificación:</strong> auditorías internas, medición y
+                  revisión por la dirección.
+                </li>
+                <li>
+                  <strong>Certificación:</strong> seleccionar organismo
+                  certificador y preparar auditoría externa.
+                </li>
+              </ol>
+
+              <div class="notice" role="note" aria-live="polite">
+                Consejo: por ejemplo para PYMES, implementar por fases y
+                priorizar acciones con mayor impacto y menor costo inicial.
+              </div>
+            </article>
+
+            <article class="card" id="kpis">
+              <h2>Objetivos SMART y KPIs (explicación y ejemplos)</h2>
+
+              <h3>Qué es SMART</h3>
+              <p class="muted">
+                <strong>SMART</strong> es un criterio para redactar objetivos
+                claros y alcanzables:
+              </p>
+              <ul>
+                <li><strong>S — Específico:</strong> qué se hará y dónde.</li>
+                <li>
+                  <strong>M — Medible:</strong> indicador cuantificable (KPI).
+                </li>
+                <li>
+                  <strong>A — Alcanzable:</strong> realista según recursos.
+                </li>
+                <li>
+                  <strong>R — Relevante:</strong> vinculado a aspectos
+                  ambientales significativos.
+                </li>
+                <li><strong>T — Temporal:</strong> fecha límite o plazo.</li>
+              </ul>
+
+              <h3>Ejemplo de objetivo SMART</h3>
+              <p class="muted">
+                “Reducir el consumo eléctrico en la planta A en un 10% antes del
+                31‑12‑2026 mediante sensores de presencia y optimización de
+                turnos; responsable: Jefe de Planta.”
+              </p>
+
+              <h3>KPIs recomendados (qué medir y por qué)</h3>
+              <div class="table-responsive">
+                <table aria-label="Ejemplos de KPIs">
+                  <thead>
+                    <tr>
+                      <th>Objetivo</th>
+                      <th>KPI</th>
+                      <th>Meta ejemplo</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Reducir consumo energético</td>
+                      <td>kWh/mes; kWh/unidad producida</td>
+                      <td>-10% en 12 meses</td>
+                    </tr>
+                    <tr>
+                      <td>Minimizar residuos no reciclables</td>
+                      <td>kg residuos no reciclables/mes</td>
+                      <td>-20% en 9 meses</td>
+                    </tr>
+                    <tr>
+                      <td>Aumentar reciclaje</td>
+                      <td>% residuos reciclados</td>
+                      <td>70% en 6 meses</td>
+                    </tr>
+                    <tr>
+                      <td>Reducir emisiones</td>
+                      <td>tCO₂e/año (alcance 1 y 2)</td>
+                      <td>-8% en 12 meses</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <h3 style="margin-top: 10px">Cómo elegir buenos KPIs</h3>
+              <ul>
+                <li>
+                  Relacionados directamente con aspectos e impactos
+                  identificados.
+                </li>
+                <li>Medibles con datos disponibles o fáciles de recolectar.</li>
+                <li>
+                  Verificables en auditoría (registros, facturas, lecturas de
+                  medidor).
+                </li>
+              </ul>
+            </article>
+
+            <article class="card" id="faq">
+              <h2>Preguntas frecuentes (FAQ)</h2>
+              <div class="accordion" id="faqAcc">
+                <div class="item">
+                  <button type="button" aria-expanded="false">
+                    ¿Necesito ser o tener una empresa o compañía grande para
+                    certificarme?
+                  </button>
+                  <div class="panel">
+                    No. La norma aplica a organizaciones de cualquier tamaño; la
+                    implementación se adapta al alcance y recursos disponibles.
+                  </div>
+                </div>
+                <div class="item">
+                  <button type="button" aria-expanded="false">
+                    ¿Cuánto tiempo toma la certificación?
+                  </button>
+                  <div class="panel">
+                    Depende del estado inicial; para PYMES con preparación puede
+                    tomar entre 6 y 12 meses desde el diagnóstico hasta la
+                    auditoría externa.
+                  </div>
+                </div>
+                <div class="item">
+                  <button type="button" aria-expanded="false">
+                    ¿Qué documentos son imprescindibles?
+                  </button>
+                  <div class="panel">
+                    Política ambiental, registro de aspectos e impactos,
+                    objetivos y KPIs, procedimientos operativos, registros de
+                    auditoría interna y revisión por la dirección de la
+                    respectiva empresa o compañía.
+                  </div>
+                </div>
+              </div>
+            </article>
+          </section>
+
+          <!-- Sidebar -->
+          <aside>
+            <div class="card" id="checklistCard">
+              <h3>Checklist rápida</h3>
+              <ol>
+                <li>Definir alcance del SGA</li>
+                <li>Política ambiental aprobada</li>
+                <li>Mapa de aspectos e impactos</li>
+                <li>Objetivos y KPIs documentados</li>
+                <li>Plan de auditoría interna</li>
+                <li>Formación del personal clave</li>
+                <li>Contacto con certificador local</li>
+              </ol>
+              <div
+                style="
+                  display: flex;
+                  gap: 8px;
+                  margin-top: 10px;
+                  flex-wrap: wrap;
+                "
+              ></div>
+            </div>
+
+            <div class="card">
+              <h3>Recursos y contactos</h3>
+              <p class="muted">Certificadores locales.</p>
+              <ul>
+                <li class="muted">
+                  ISO.org — publicación oficial (buscar ISO 14001:2026)
+                </li>
+                <li class="muted">
+                  Organismo de acreditación nacional (ej: INTECO / ente local)
+                </li>
+              </ul>
+              
+               <p>
+                <a
+              href="https://inteco.org/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="color: #130101; text-decoration: none"
+            >
+              Página web de <strong>Inteco</strong> (presionar o hacer click encima) https://inteco.org/
+            </a>
+              </p>
+            
+
+            <div class="card">
+              <h3>Recuerda</h3>
+              <p class="muted">
+                Esto no sustituye a la norma ISO 14001, son solo aspectos de
+                aprendizaje rápido, a tomar en cuenta para que de esta forma
+                ayudar y proteger, al medio ambiente e intentar disminuir el
+                impacto en el mundo.
+              </p>
+              <p style="margin-top: 8px">
+                <a class="bt" href="mailto:contacto@josbrevar07.cr"></a>
+              </p>
+            </div>
+          </aside>
+        </div>
+      </main>
+
+      <!-- Footer -->
+      <footer class="site-footer" role="contentinfo" aria-label="Pie de página">
+        <div class="footer-inner">
+          <div>
+            <div class="josbrevar">Designed by Josbrevar 07</div>
+            <div class="small">© All rights reserved. 2026.</div>
+            <div class="">
+              <strong
+                >Página web creada y diseñada en Santiago de Puriscal, San José,
+                Costa Rica</strong
+              >
+            </div>
+          </div>
+
+          <div style="text-align: right">
+            <div class="small" style="margin-bottom: 6px">
+              ¿Necesita una página web? Contáctenos si gusta
+            </div>
+            <div class="footer-icons" aria-hidden="true">
+              <!-- WhatsApp -->
+              <a
+                href="https://walink.co/341b8e"
+                title="WhatsApp"
+                aria-label="WhatsApp"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                  <path
+                    d="M20.5 3.5A11.9 11.9 0 0 0 12 1C6 1 1.2 5.8 1.2 11.8c0 2 .5 3.9 1.5 5.6L1 23l5.9-1.5c1.6.9 3.4 1.4 5.1 1.4 6 0 10.8-4.8 10.8-10.8 0-3-1.2-5.8-3.3-7.6zM12 20c-1.5 0-3-.4-4.3-1.1l-.3-.2-3.5.9.9-3.4-.2-.3A8 8 0 1 1 20 12 8 8 0 0 1 12 20z"
+                  />
+                  <path
+                    d="M17 14.2c-.3-.1-1.8-.9-2-.9-.2 0-.3-.1-.5.1-.2.2-.8.9-1 1.1-.2.2-.4.2-.7.1-.3-.1-1.2-.4-2.3-1.4-.9-.8-1.5-1.8-1.7-2.1-.2-.3 0-.5.1-.6.1-.1.3-.3.4-.5.1-.2.1-.4 0-.6-.1-.2-.5-1.2-.7-1.6-.2-.4-.4-.3-.6-.3-.2 0-.4 0-.6 0-.2 0-.6.1-.9.4-.3.3-1 1-1 2.4s1 2.8 1.2 3c.2.2 2 3.1 4.9 4.3 2.9 1.2 2.9.8 3.4.8.5 0 1.8-.7 2-1.4.2-.7.2-1.3.1-1.4-.1-.1-.3-.2-.6-.3z"
+                  />
+                </svg>
+              </a>
+
+              <!-- Facebook -->
+              <a
+                href="https://www.facebook.com/josue.brenesvargas"
+                title="Facebook"
+                aria-label="Facebook"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                  <path
+                    d="M22 12a10 10 0 1 0-11.5 9.9v-7h-2.2V12h2.2V9.8c0-2.2 1.3-3.4 3.3-3.4.9 0 1.8.1 1.8.1v2h-1c-1 0-1.3.6-1.3 1.2V12h2.3l-.4 2.9h-1.9v7A10 10 0 0 0 22 12z"
+                  />
+                </svg>
+              </a>
+
+              <!-- Instagram -->
+              <a
+                href="https://www.instagram.com/josbrevar07/"
+                title="Instagram"
+                aria-label="Instagram"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-instagram"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"
+                  />
+                </svg>
+              </a>
+
+              <!-- LinkedIn -->
+              <a
+                href="https://clases-de-manejo-personalizadas.com/"
+                title="LinkedIn"
+                aria-label="LinkedIn"
+                target="_blank"
+                rel="noopener"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-browser-chrome"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M16 8a8 8 0 0 1-7.022 7.94l1.902-7.098a3 3 0 0 0 .05-1.492A3 3 0 0 0 10.237 6h5.511A8 8 0 0 1 16 8M0 8a8 8 0 0 0 7.927 8l1.426-5.321a3 3 0 0 1-.723.255 3 3 0 0 1-1.743-.147 3 3 0 0 1-1.043-.7L.633 4.876A8 8 0 0 0 0 8m5.004-.167L1.108 3.936A8.003 8.003 0 0 1 15.418 5H8.066a3 3 0 0 0-1.252.243 2.99 2.99 0 0 0-1.81 2.59M8 10a2 2 0 1 0 0-4 2 2 0 0 0 0 4"
+                  />
+                </svg>
+              </a>
+
+              <!-- Email -->
+              <a
+                href="https://www.youtube.com/@josbrevar0773"
+                title="Email"
+                aria-label="Email"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-youtube"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.01 2.01 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.01 2.01 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31 31 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.01 2.01 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A100 100 0 0 1 7.858 2zM6.4 5.209v4.818l4.157-2.408z"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top: 12px" class="contact-list" aria-hidden="true">
+          <li style="color: #fff">
+            <a
+              href="https://clases-de-manejo-personalizadas.com/"
+              style="color: #fff; text-decoration: none"
+              >Página web de clases de manejo personalizadas</a
+            >
+            &nbsp;|&nbsp;
+            <a
+              href="https://josbrevar07.github.io/learning_any_language/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="color: #fff; text-decoration: none"
+            >
+              Página web de Learning Any Language
+            </a>
+          </li>
+          <li style="color: #fff">
+            <a
+              href="https://josbrevar07.github.io/irregular_verb_challenge_3/"
+              style="color: #fff; text-decoration: none"
+              >Ejercicio en línea para practicar los verbos irregulares en
+              inglés</a
+            >
+            &nbsp;|&nbsp;
+            <a
+              href="https://josbrevar07.github.io/practica_leyes_acento_espanol/"
+              target="_blank"
+              rel="noopener noreferrer"
+              style="color: #fff; text-decoration: none"
+            >
+              Práctica de palabras agudas, graves y esdrújulas en español
+            </a>
+          </li>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      /* ====== Interactividad: búsqueda interna (simple), acordeón, imprimir/copy, botones ====== */
+
+      // Simple search: filtra artículos por texto
+      const searchInput = document.getElementById("siteSearch");
+      const articles = Array.from(document.querySelectorAll("article.card"));
+      searchInput.addEventListener("input", (e) => {
+        const q = e.target.value.trim().toLowerCase();
+        if (!q) {
+          articles.forEach((a) => (a.style.display = "block"));
+          return;
+        }
+        articles.forEach((a) => {
+          const text = a.innerText.toLowerCase();
+          a.style.display = text.includes(q) ? "block" : "none";
+        });
+      });
+      document.getElementById("clearSearch").addEventListener("click", () => {
+        searchInput.value = "";
+        searchInput.dispatchEvent(new Event("input"));
+        searchInput.focus();
+      });
+
+      // Accordion FAQ
+      document.querySelectorAll(".accordion .item button").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const expanded = btn.getAttribute("aria-expanded") === "true";
+          // close all siblings
+          document.querySelectorAll(".accordion .item button").forEach((b) => {
+            b.setAttribute("aria-expanded", "false");
+            if (b.nextElementSibling)
+              b.nextElementSibling.style.display = "none";
+          });
+          // toggle current
+          btn.setAttribute("aria-expanded", String(!expanded));
+          const panel = btn.nextElementSibling;
+          if (!expanded) panel.style.display = "block";
+          else panel.style.display = "none";
+        });
+      });
+
+      // Print checklist (opens new window and triggers print)
+      document
+        .getElementById("printChecklist")
+        .addEventListener("click", () => {
+          const checklistHtml = `
+        <html><head><title>Checklist ISO 14001</title>
+        <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+        <style>body{font-family:Arial,Helvetica,sans-serif;padding:20px;color:#0b2b22}h2{color:#0b8a55}ol{margin-top:12px}</style>
+        </head><body>
+        <h2>Checklist rápida — ISO 14001:2026</h2>
+        <ol>
+          <li>Definir alcance del SGA</li>
+          <li>Política ambiental aprobada</li>
+          <li>Mapa de aspectos e impactos</li>
+          <li>Objetivos y KPIs documentados</li>
+          <li>Plan de auditoría interna</li>
+          <li>Formación del personal clave</li>
+          <li>Contacto con certificador local</li>
+        </ol>
+        <p>Generado desde Josbrevar 07</p>
+        </body></html>`;
+          const w = window.open("", "_blank");
+          w.document.write(checklistHtml);
+          w.document.close();
+          w.focus();
+          // Delay print slightly to ensure rendering
+          setTimeout(() => w.print(), 300);
+        });
+
+      // Copy checklist to clipboard
+      document
+        .getElementById("copyChecklist")
+        .addEventListener("click", async () => {
+          const text = `Checklist rápida - ISO 14001:2026
+
+1. Definir alcance del SGA
+2. Política ambiental aprobada
+3. Mapa de aspectos e impactos
+4. Objetivos y KPIs documentados
+5. Plan de auditoría interna
+6. Formación del personal clave
+7. Contacto con certificador local
+
+Generado por Josbrevar 07`;
+          try {
+            await navigator.clipboard.writeText(text);
+            alert(
+              "Checklist copiada al portapapeles. Pégala en tu editor y guárdala.",
+            );
+          } catch (e) {
+            alert(
+              "No se pudo copiar automáticamente. Selecciona y copia manualmente:\n\n" +
+                text,
+            );
+          }
+        });
+
+      // Show contacts placeholder
+      document.getElementById("showContacts").addEventListener("click", () => {
+        alert(
+          "Contactos de certificadores en Costa Rica (ejemplo):\n\n- Inteco — teléfono: +(506)40806490\n- https://inteco.org/.",
+        );
+      });
+
+      // Accessibility: focus outlines for keyboard users
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Tab") document.body.classList.add("show-focus");
+      });
+    </script>
+  </body>
+</html>
